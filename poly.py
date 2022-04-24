@@ -18,7 +18,7 @@ __all__ = [
     'cos',
     'breed',
     'mean',
-    'nice',
+    'mix',
     'coordinates',
     'expand',
     'split',
@@ -94,9 +94,9 @@ def mean(objs):
     ts = slow.to_array(objs)
     return fast.mean(ts)
 
-def nice(objs):
+def mix(objs):
     ts = slow.to_array(objs)
-    return fast.nice(ts)
+    return fast.mix(ts)
 
 def coordinates(objs, obj):
     ts = slow.to_array(objs)

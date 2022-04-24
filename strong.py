@@ -12,7 +12,7 @@ import types
 import typing
 import jaxlib
 import jax.numpy as jnp
-
+from _collections_abc import dict_values
 
 def to_thought(arg):
     if hasattr(arg, 'think'):
@@ -25,6 +25,8 @@ def to_thought(arg):
 def to_array(arg):
     if isinstance(arg, jaxlib.xla_extension.DeviceArray):
         return arg
+    if isinstance(arg, dict_values):
+        arg = list(arg)
     if isinstance(arg, (list, tuple, set)):
         thoughts = [to_thought(o) for o in arg]
         return jnp.stack(thoughts, axis=0)

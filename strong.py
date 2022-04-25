@@ -25,6 +25,8 @@ def to_thought(arg):
 def to_array(arg):
     if isinstance(arg, jaxlib.xla_extension.DeviceArray):
         return arg
+    if isinstance(arg, dict):
+        arg = list(arg.values())
     if isinstance(arg, dict_values):
         arg = list(arg)
     if isinstance(arg, (list, tuple, set)):

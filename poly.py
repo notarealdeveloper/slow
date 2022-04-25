@@ -26,6 +26,9 @@ __all__ = [
     'reject',
     'explained',
     'unexplained',
+    'pre_attention_l1',
+    'pre_attention_l2',
+    'pre_attention_sm',
     'attention_l1',
     'attention_l2',
     'attention_sm',
@@ -132,6 +135,21 @@ def unexplained(objs, obj):
     ts = slow.to_array(objs)
     t = slow.to_thought(obj)
     return fast.unexplained(ts, t)
+
+def pre_attention_l1(objs, obj):
+    ts = slow.to_array(objs)
+    t = slow.to_thought(obj)
+    return fast.pre_attention_l1(ts, t)
+
+def pre_attention_l2(objs, obj):
+    ts = slow.to_array(objs)
+    t = slow.to_thought(obj)
+    return fast.pre_attention_l2(ts, t)
+
+def pre_attention_sm(objs, obj):
+    ts = slow.to_array(objs)
+    t = slow.to_thought(obj)
+    return fast.pre_attention_sm(ts, t)
 
 def attention_l1(objs, obj):
     ts = slow.to_array(objs)

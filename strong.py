@@ -8,22 +8,28 @@ ___all__ = [
     'is_instance',
 ]
 
-import types
-import typing
+import jax
 import jaxlib
 import jax.numpy as jnp
+
+import types
+import typing
 from _collections_abc import dict_values
 
 def to_thought(arg):
-    if hasattr(arg, 'think'):
-        return arg.think()
     if isinstance(arg, jaxlib.xla_extension.DeviceArray):
         return arg
+    if isinstance(arg, jax.core.Tracer):
+        return arg
+    if hasattr(arg, 'think'):
+        return arg.think()
     raise TypeError(f"Cannot coerce to thought: {arg!r}")
 
 
 def to_array(arg):
     if isinstance(arg, jaxlib.xla_extension.DeviceArray):
+        return arg
+    if isinstance(arg, jax.core.Tracer):
         return arg
     if isinstance(arg, dict):
         arg = list(arg.values())

@@ -24,7 +24,7 @@ def get_promotions(jit_func):
     num_plurals = 0
     for name in inspect.signature(jit_func).parameters:
         if len(name) == 1:
-            promotion = 'slow.to_thought'
+            promotion = 'slow.to_vector'
         elif len(name) == 2:
             promotion = 'slow.to_array'
             num_plurals += 1

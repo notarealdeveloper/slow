@@ -32,8 +32,8 @@ __all__ = [
     'attention_l1',
     'attention_l2',
     'attention_sm',
-    'hardset',
-    'softset'
+    'setattr',
+    'mixattr'
 ]
 
 def norm(obj):
@@ -166,14 +166,14 @@ def attention_sm(objs, obj):
     t = slow.to_vector(obj)
     return fast.attention_sm(ts, t)
 
-def hardset(objs, obj, value):
+def setattr(objs, obj, value):
     ts = slow.to_array(objs)
     t = slow.to_vector(obj)
     v = slow.to_vector(value)
-    return fast.hardset(ts, t, v)
+    return fast.setattr(ts, t, v)
 
-def softset(objs, obj, value):
+def mixattr(objs, obj, value):
     ts = slow.to_array(objs)
     t = slow.to_vector(obj)
     v = slow.to_vector(value)
-    return fast.softset(ts, t, v)
+    return fast.mixattr(ts, t, v)

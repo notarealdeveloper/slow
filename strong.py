@@ -9,6 +9,8 @@ __all__ = [
     'is_jax_vector',
     'is_jax_array',
     'is_instance',
+    'jax_array_type',
+    'least_base_type',
 ]
 
 import jax
@@ -71,6 +73,12 @@ def is_jax_array(arg):
 
 def is_jax_vector(arg):
     return isinstance(arg, jax_array_type) and arg.ndim == 1
+
+def least_base_type(*types):
+    from functools import reduce
+    from operator import and_
+    from collections import Counter
+    return next(iter(reduce(and_, (Counter(t.mro()) for t in types))))
 
 def is_instance(obj, cls):
 

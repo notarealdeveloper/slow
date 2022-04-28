@@ -113,6 +113,7 @@ def regenerate_module(fast, output_path):
         exports=exports.strip(),
         functions=functions.strip(),
     )
+    module = f"{module}\n"
 
     with open(output_path, 'w') as fp:
         fp.write(module)

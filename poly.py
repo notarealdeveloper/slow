@@ -32,6 +32,7 @@ __all__ = [
     'attention_l1',
     'attention_l2',
     'attention_sm',
+    'dots',
     'setattr',
     'mixattr'
 ]
@@ -165,6 +166,11 @@ def attention_sm(objs, obj):
     ts = slow.to_array(objs)
     t = slow.to_vector(obj)
     return fast.attention_sm(ts, t)
+
+def dots(objs, obj):
+    ts = slow.to_array(objs)
+    t = slow.to_vector(obj)
+    return fast.dots(ts, t)
 
 def setattr(objs, obj, value):
     ts = slow.to_array(objs)
